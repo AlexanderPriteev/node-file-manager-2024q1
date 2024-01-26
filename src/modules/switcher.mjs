@@ -1,19 +1,25 @@
 import { homedir } from 'node:os';
+import { txtInvalid, txtFailed } from './textArgs.mjs';
 import stopWork from '../commands/exit.mjs';
 import pos from './position.mjs';
-import { txtInvalid, txtFailed } from './textArgs.mjs';
-import up from "../commands/up.mjs";
+import up from '../commands/up.mjs';
+import cd from '../commands/cd.mjs';
 
 let CURRENT_DIR = homedir();
 
 export default async function switcher(commandLime) {
-  console.log(commandLime)
   const cmd = commandLime.replace(/\r\n/, '').split(' ');
   switch (cmd[0]) {
     case '.exit': stopWork();
       break;
     case 'up': {
       CURRENT_DIR = up(CURRENT_DIR);
+      break;
+    }
+    case 'cd': {
+      const newPath = await cd(CURRENT_DIR, cmd[1]);
+      if (newPath === txtFailed) console.log(txtFailed);
+      else CURRENT_DIR = newPath;
       break;
     }
     default: console.log(txtInvalid);
