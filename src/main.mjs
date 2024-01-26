@@ -1,5 +1,5 @@
 import process from 'node:process';
-import stopWork from './modules/end.mjs';
+import stopWork from './commands/exit.mjs';
 import startWork from './modules/start.mjs';
 import setCommand from './modules/controler.mjs';
 
