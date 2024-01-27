@@ -2,7 +2,7 @@ import { basename, join } from 'node:path';
 import { createReadStream, createWriteStream } from 'node:fs';
 import cd from './cd.mjs';
 import { txtFailed } from '../modules/textArgs.mjs';
-import rm from "./rm.mjs";
+import rm from './rm.mjs';
 
 export default async function copyFiles(isDel, dir, oldPath, newPath) {
   try {
@@ -20,7 +20,7 @@ export default async function copyFiles(isDel, dir, oldPath, newPath) {
     await new Promise((resolve, reject) => {
       streamRead.pipe(streamWrite).on('finish', resolve).on('error', reject);
     });
-    if(isDel) await rm(dir, file);
+    if (isDel) await rm(dir, file);
   } catch {
     console.log(txtFailed);
   }
