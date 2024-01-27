@@ -5,7 +5,7 @@ import cd from './cd.mjs';
 export default async function cat(cur, dir) {
   const path = await cd(cur, dir);
   try {
-    if (path === txtFailed) throw new Error(txtFailed);
+    if (path === txtFailed) throw new Error();
     await new Promise((resolve, reject) => {
       const stream = createReadStream(path);
       stream.on('readable', () => {
@@ -16,7 +16,7 @@ export default async function cat(cur, dir) {
       stream.on('end', resolve);
       stream.on('error', reject);
     });
-  } catch (error) {
+  } catch {
     console.log(txtFailed);
   }
 }
