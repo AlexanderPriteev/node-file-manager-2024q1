@@ -6,6 +6,7 @@ import up from '../commands/up.mjs';
 import cd from '../commands/cd.mjs';
 import ls from '../commands/ls.mjs';
 import cat from '../commands/cat.mjs';
+import add from '../commands/add.mjs';
 
 let CURRENT_DIR = homedir();
 
@@ -30,6 +31,10 @@ export default async function switcher(commandLime) {
     }
     case 'cat': {
       await cat(CURRENT_DIR, cmd[1]);
+      break;
+    }
+    case 'add': {
+      await add(CURRENT_DIR, cmd[1]);
       break;
     }
     default: console.log(txtInvalid);
