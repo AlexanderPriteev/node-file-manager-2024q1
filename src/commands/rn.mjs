@@ -5,7 +5,7 @@ import cd from './cd.mjs';
 
 export default async function rn(dir, pathToFile, name) {
   try {
-    const path = await cd(dir, pathToFile);
+    const path = await cd(dir, pathToFile, 'file');
     if (path === txtFailed) throw new Error();
     const newName = join(dirname(path), name);
     await rename(path, newName);

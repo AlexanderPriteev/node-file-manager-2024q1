@@ -3,7 +3,7 @@ import { txtFailed } from '../modules/textArgs.mjs';
 import cd from './cd.mjs';
 
 export default async function cat(cur, dir) {
-  const path = await cd(cur, dir);
+  const path = await cd(cur, dir, 'file');
   try {
     if (path === txtFailed) throw new Error();
     await new Promise((resolve, reject) => {

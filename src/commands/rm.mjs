@@ -4,7 +4,7 @@ import { txtFailed } from '../modules/textArgs.mjs';
 
 export default async function rm(dir, name) {
   try {
-    const path = await cd(dir, name);
+    const path = await cd(dir, name, 'file');
     if (path === txtFailed) throw new Error();
     await unlink(path);
   } catch {
