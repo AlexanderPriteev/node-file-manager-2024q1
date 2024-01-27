@@ -11,6 +11,7 @@ import rn from '../commands/rn.mjs';
 import rm from '../commands/rm.mjs';
 import copyFiles from '../commands/copyFile.mjs';
 import osData from '../commands/os/os.mjs';
+import hash from '../commands/hash.mjs';
 
 let CURRENT_DIR = homedir();
 
@@ -52,6 +53,9 @@ export default async function switcher(commandLime) {
       break;
     case 'os':
       osData(cmd[1]);
+      break;
+    case 'hash':
+      await hash(CURRENT_DIR, cmd[1]);
       break;
     default: console.log(txtInvalid);
   }
