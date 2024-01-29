@@ -1,5 +1,5 @@
 import { exit } from 'node:process';
-import getUserData from '../modules/getUserData.mjs';
+import getUserData from '../modules/path/getUserData.mjs';
 import { txtBye } from '../modules/textArgs.mjs';
 
 export default function stopWork() {

@@ -1,5 +1,5 @@
-import getUserData from './getUserData.mjs';
-import pos from './position.mjs';
+import getUserData from './path/getUserData.mjs';
+import pos from './path/position.mjs';
 import { txtWelcome } from './textArgs.mjs';
 
 export default function startWork() {

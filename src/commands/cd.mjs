@@ -1,6 +1,6 @@
 import { parse, join, normalize } from 'node:path';
 import { stat } from 'node:fs/promises';
-import isCorrectPath from '../modules/checkPath.mjs';
+import isCorrectPath from '../modules/path/checkPath.mjs';
 import { txtFailed } from '../modules/textArgs.mjs';
 
 export default async function cd(cur, dir, isValidate = 'folder') {

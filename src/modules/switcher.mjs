@@ -1,7 +1,7 @@
 import { homedir } from 'node:os';
 import { txtInvalid, txtFailed } from './textArgs.mjs';
 import stopWork from '../commands/exit.mjs';
-import pos from './position.mjs';
+import pos from './path/position.mjs';
 import up from '../commands/up.mjs';
 import cd from '../commands/cd.mjs';
 import ls from '../commands/ls.mjs';
@@ -12,6 +12,7 @@ import rm from '../commands/rm.mjs';
 import copyFiles from '../commands/copyFile.mjs';
 import osData from '../commands/os/os.mjs';
 import hash from '../commands/hash.mjs';
+import compress from '../commands/compress.mjs';
 
 let CURRENT_DIR = homedir();
 
@@ -56,6 +57,12 @@ export default async function switcher(commandLime) {
       break;
     case 'hash':
       await hash(CURRENT_DIR, cmd[1]);
+      break;
+    case 'compress':
+      await compress(true, CURRENT_DIR, cmd[1], cmd[2]);
+      break;
+    case 'decompress':
+      await compress(false, CURRENT_DIR, cmd[1], cmd[2]);
       break;
     default: console.log(txtInvalid);
   }

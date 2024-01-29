@@ -1,25 +1,17 @@
-import { basename, join } from 'node:path';
 import { createReadStream, createWriteStream } from 'node:fs';
-import cd from './cd.mjs';
+import { pipeline } from 'node:stream/promises';
 import { txtFailed } from '../modules/textArgs.mjs';
 import rm from './rm.mjs';
+import getNewPath from '../modules/path/getNewPath.mjs';
 
-export default async function copyFiles(isDel, dir, oldPath, newPath) {
+export default async function copyFiles(isDel, dir, oldPath, newDir) {
   try {
-    const file = await cd(dir, oldPath, 'file');
-    let newFile = await cd(dir, newPath, 'none');
-    const newFileDir = await cd(dir, newPath, 'folder');
-
+    const [file, newFile] = await getNewPath(dir, oldPath, newDir);
     if ([file, newFile].includes(txtFailed)) throw new Error();
-    if (newFileDir !== txtFailed) {
-      newFile = join(newFile, basename(file));
-    }
 
     const streamRead = createReadStream(file);
     const streamWrite = createWriteStream(newFile);
-    await new Promise((resolve, reject) => {
-      streamRead.pipe(streamWrite).on('finish', resolve).on('error', reject);
-    });
+    await pipeline(streamRead, streamWrite);
     if (isDel) await rm(dir, file);
   } catch {
     console.log(txtFailed);
