@@ -1,0 +1,25 @@
+{
+  "name": "node-2024q1-file-manager",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/main.mjs",
+
+    "lint": "eslint . --ext .mjs",
+    "lint:fix": "eslint . --ext .mjs --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderPriteev/node-file-manager-2024q1.git"
+  },
+  "author": "Alexander Priteev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderPriteev/node-file-manager-2024q1/issues"
+  },
+  "homepage": "https://github.com/AlexanderPriteev/node-file-manager-2024q1#readme",
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2"
+  }
+}
