@@ -13,11 +13,12 @@ import copyFiles from '../commands/copyFile.mjs';
 import osData from '../commands/os/os.mjs';
 import hash from '../commands/hash.mjs';
 import compress from '../commands/compress.mjs';
+import os from 'node:os';
 
 let CURRENT_DIR = homedir();
 
 export default async function switcher(commandLime) {
-  const cmd = commandLime.replace(/\r\n/, '').split(' ');
+  const cmd = commandLime.replace(os.EOL, '').split(' ');
   switch (cmd[0]) {
     case '.exit':
       stopWork();
