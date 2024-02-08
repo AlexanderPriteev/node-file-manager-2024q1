@@ -11,7 +11,7 @@ export default function osData(cmd) {
       getCPU();
       break;
     case '--homedir':
-      console.lo(os.homedir());
+      console.log(os.homedir());
       break;
     case '--username':
       console.log(os.userInfo().username);
